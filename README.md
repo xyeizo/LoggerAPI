@@ -10,3 +10,27 @@ LoggerAPI is a robust, customizable logging library designed for .NET applicatio
 - **Log Level Filtering**: Control which log messages are recorded by setting the minimum log level.
 - **Customizable Formats**: Supports customization of log formats, including optional watermarks.
 - **Concurrency Safe**: Utilizes concurrent queues and semaphore locks to handle logs from multiple threads safely.
+
+## Example
+
+```csharp
+// Configure LoggerAPI
+Logger.Configuration = new LoggerConfiguration
+{
+    LogFilePath = "path/to/logs.txt",
+    MinimumLogLevel = LoggerData.LogLevel.Info,
+    UseWatermark = true,
+    WatermarkText = "Application Log",
+    WatermarkColor = ConsoleColor.Cyan,
+    MessageColor = ConsoleColor.White
+};
+
+// Log an informational message
+Logger.Log(LoggerData.LogLevel.Info, "Application has started successfully.");
+
+// Log a warning message
+Logger.Log(LoggerData.LogLevel.Warning, "Warning: Low disk space.");
+
+// Log an error message
+Logger.Log(LoggerData.LogLevel.Error, "Error: Unable to access database.");
+```
