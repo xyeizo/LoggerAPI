@@ -116,7 +116,7 @@ namespace LoggerAPI
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Failed to write logs to file: {ex.Message}");
+                    throw new Exception($"Failed to write logs to file: {ex.Message}");
                 }
                 finally
                 {
