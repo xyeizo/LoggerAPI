@@ -73,10 +73,13 @@ namespace LoggerAPI
         {
             ConsoleColor originalColor = Console.ForegroundColor;
 
-            if (_configuration.UseWatermark)
-                Console.WriteLine($"[{DateTime.Now}] {_configuration.WatermarkText}");
-
-            Console.ForegroundColor = ConsoleColor.DarkGray; // For timestamp
+            Console.ForegroundColor = _configuration.WatermarkColor;
+            Console.Write("<");
+            Console.ForegroundColor = _configuration.MessageColor;
+            Console.Write($"{_configuration.WatermarkText}");
+            Console.ForegroundColor = _configuration.WatermarkColor;
+            Console.Write("> ");
+            Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.Write($"[{DateTime.Now}] ");
             Console.ForegroundColor = GetConsoleColor(level);
             Console.Write("[");
